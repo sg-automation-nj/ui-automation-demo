@@ -41,7 +41,7 @@
             <artifactId>automation</artifactId>
             <version>1.0-SNAPSHOT</version>
             <scope>system</scope>
-            <systemPath>/Users/rohit/Desktop/UI_Automation_Service/UI_Library/Sanmyala/target/sanmyala-ui-jar-with-dependencies.jar</systemPath>
+            <systemPath>${basedir}/src/main/resources/library/sanmyala-ui-jar-with-dependencies.jar</systemPath>
         </dependency>
 
     </dependencies>
