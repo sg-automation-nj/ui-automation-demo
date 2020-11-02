@@ -30,7 +30,7 @@ public class AutomationPractice extends Config implements ITest {
     public void shopApparels(){
         try{
             logger.info("Test Started for us", kv("testcase", testcase.getString("description")));
-            this.testInstance.setWebDriver(Utilities.getDriver(Browsers.valueOf("CHROME")).getLocalDriver());
+            this.testInstance.setWebDriver(Utilities.getDriver(Browsers.valueOf("CHROME")).getRemoteWebDriver(Utilities.selenoidCaps(Browsers.valueOf("CHROME"))));
             this.testInstance.getWebDriver().manage().window().maximize();
             this.testInstance.getWebDriver().get("http://automationpractice.com/");
             Checkout checkoutPage = new Checkout(testInstance);
