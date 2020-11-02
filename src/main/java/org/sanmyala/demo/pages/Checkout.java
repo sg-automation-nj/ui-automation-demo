@@ -6,6 +6,8 @@ import org.sanmyala.actions.IElementActions;
 import org.sanmyala.actions.IMouseActions;
 import org.sanmyala.config.TestInstance;
 import org.sanmyala.constants.Identifiers;
+import org.sanmyala.constants.Status;
+import org.sanmyala.reporting.Validation;
 import org.testng.Assert;
 
 import java.util.List;
@@ -60,7 +62,12 @@ public class Checkout {
         String productTotal = elementAction.waitForAnElementToBeClickable(driver, elementAction.getBy(Identifiers.XPATH, "//span[@class='ajax_block_products_total']"), elementAction.getLongWaitTime()).getText().replace("$", "");
         String shipping = elementAction.waitForAnElementToBeClickable(driver, elementAction.getBy(Identifiers.XPATH, "//span[@class='ajax_cart_shipping_cost']"), elementAction.getLongWaitTime()).getText().replace("$", "");
         String total = elementAction.waitForAnElementToBeClickable(driver, elementAction.getBy(Identifiers.XPATH, "//span[@class='ajax_block_cart_total']"), elementAction.getLongWaitTime()).getText().replace("$", "");
-        Assert.assertEquals(Double.parseDouble(productTotal)+Double.parseDouble(shipping), Double.parseDouble(total));
+
+        if(Double.parseDouble(productTotal)+Double.parseDouble(shipping)==Double.parseDouble(total)){
+            Validation.setValidation(testInstance, Status.SUCCESS, "Validate item total, shipping & tax equals item cart", "Cart total is matching with items, shipping & tax total");
+        }else{
+            Validation.setValidation(testInstance, Status.FAILED, "Validate item total, shipping & tax equals item cart", String.format("Cart total %s is not matching with items, shipping & tax total %s", Double.parseDouble(total), Double.parseDouble(productTotal)+Double.parseDouble(shipping)));
+        }
     }
 
     public void addToCart(){
@@ -78,7 +85,13 @@ public class Checkout {
             cartTotal = cartTotal + (itemTotal * cartQuantity);
         }
         double totalProduct = Double.parseDouble(elementAction.getElementText(driver, elementAction.getBy(Identifiers.XPATH, "//td[@id='total_product']")).replace("$", ""));
-        Assert.assertEquals(cartTotal, totalProduct);
+        String status;
+
+        if(cartTotal==totalProduct){
+            Validation.setValidation(testInstance, Status.SUCCESS, "Validate cart total against items total", "Cart total is matching with items total");
+        }else{
+            Validation.setValidation(testInstance, Status.FAILED, "Validate cart total against items total", String.format("Cart total %s is not matching with items total %s", cartTotal, totalProduct));
+        }
     }
 
     public void validateCheckoutTotal(){

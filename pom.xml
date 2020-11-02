@@ -44,7 +44,21 @@
             <systemPath>${basedir}/src/main/resources/library/sanmyala-ui-jar-with-dependencies.jar</systemPath>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.testng/testng -->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.3.0</version>
+        </dependency>
     </dependencies>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.seleniumhq.selenium</groupId>
+                <artifactId>selenium-java</artifactId>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
 
     <build>
@@ -55,6 +69,16 @@
                 <configuration>
                     <source>${java.version}</source>
                     <target>${java.version}</target>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M4</version>
+                <configuration>
+                    <suiteXmlFiles>
+                        <file>src/main/resources/xml/suite.xml</file>
+                    </suiteXmlFiles>
                 </configuration>
             </plugin>
         </plugins>
