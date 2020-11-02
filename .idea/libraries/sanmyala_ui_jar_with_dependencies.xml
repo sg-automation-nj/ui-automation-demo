@@ -1,9 +1,0 @@
-<component name="libraryTable">
-  <library name="sanmyala-ui-jar-with-dependencies">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/../Sanmyala/target/sanmyala-ui-jar-with-dependencies.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-</component>
