@@ -51,8 +51,8 @@ public class Config extends SmInstance {
      */
     public void setDriver(){
         logger.info("Initiating Web Browser");
-        //this.testInstance.setWebDriver(Utilities.getDriver(Browsers.valueOf("CHROME")).getRemoteWebDriver(Utilities.selenoidCaps(Browsers.valueOf("CHROME"))));
-        this.testInstance.setWebDriver(Utilities.getDriver(Browsers.valueOf("CHROME")).getLocalDriver());
+        this.testInstance.setWebDriver(Utilities.getDriver(Browsers.valueOf("CHROME")).getRemoteWebDriver(Utilities.selenoidCaps(Browsers.valueOf("CHROME"))));
+        //this.testInstance.setWebDriver(Utilities.getDriver(Browsers.valueOf("CHROME")).getRemoteDriver("http://54.174.156.146:4444/wd/hub"));
         this.testInstance.getWebDriver().manage().window().maximize();
         this.testInstance.getWebDriver().get(this.testInstance.getAppUrl());
     }
