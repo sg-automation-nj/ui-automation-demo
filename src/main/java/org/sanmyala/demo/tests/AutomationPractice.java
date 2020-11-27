@@ -30,9 +30,6 @@ public class AutomationPractice extends Config implements ITest {
     public void shopApparels(){
         try{
             logger.info("Test Started for us", kv("testcase", testcase.getString("description")));
-            this.testInstance.setWebDriver(Utilities.getDriver(Browsers.valueOf("CHROME")).getRemoteWebDriver(Utilities.selenoidCaps(Browsers.valueOf("CHROME"))));
-            this.testInstance.getWebDriver().manage().window().maximize();
-            this.testInstance.getWebDriver().get("http://automationpractice.com/");
             Checkout checkoutPage = new Checkout(testInstance);
             checkoutPage.selectCategory(testcase.getString("category"));
             checkoutPage.selectProduct(testcase.getString("product"));
@@ -59,6 +56,6 @@ public class AutomationPractice extends Config implements ITest {
 
     @Override
     public String getTestName() {
-        return this.testcase.getString("description");
+        return this.testcase.getString("scenarioId")+"_"+this.testcase.getString("description");
     }
 }

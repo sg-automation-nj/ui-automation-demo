@@ -7,7 +7,20 @@
     <parameter name="reporting-api-host" value="localhost"></parameter>
     <parameter name="reporting-api-port" value="5000"></parameter>
     <parameter name="secure-api" value="no"></parameter>
-    <test name="Shop Groceries" parallel="instances" thread-count="2">
+    <test name="SHOP_TSHIRTS" parallel="instances" thread-count="2">
+        <classes>
+            <class name="org.sanmyala.demo.tests.AutomationPractice"/>
+        </classes>
+    </test>
+
+    <test name="SHOP_TEES" parallel="instances" thread-count="2">
+        <classes>
+            <class name="org.sanmyala.demo.tests.AutomationPractice"/>
+        </classes>
+    </test>
+
+
+    <test name="SHOP_ACCESSORIES" parallel="instances" thread-count="2">
         <classes>
             <class name="org.sanmyala.demo.tests.AutomationPractice"/>
         </classes>
